@@ -1,0 +1,145 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.alert-error {
+  background: rgba(240,75,71,0.07);
+  border: 1px solid rgba(240,75,71,0.2);
+  color: var(--error);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  font-family: inherit;
+  letter-spacing: 0;
+  transition: background var(--transition);
+}
+.btn-primary {
+  background: var(--accent-blue);
+  color: #fff;
+  width: 100%;
+}
+.btn-primary:hover:not(:disabled) { background: var(--accent-blue-dark); }
+.btn-primary:active:not(:disabled) { background: var(--accent-blue-dark); transform: none; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-secondary {
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  width: 100%;
+  border: 1px solid var(--border-mid);
+}
+.btn-secondary:hover { background: var(--bg-hover); }
+
+/* spinner used inside buttons */
+.spinner {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.auth-form-footer-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -4px;
+}
+.link-muted {
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+.link-muted:hover { color: var(--orange); }
+
+.auth-switch {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+.link-accent {
+  color: var(--orange);
+  font-weight: 600;
+  transition: color var(--transition);
+}
+.link-accent:hover { color: var(--orange-dark); text-decoration: underline; }
+
+/* password strength bars */
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: -4px;
+}
+.strength-bars { display: flex; gap: 3px; flex: 1; }
+.strength-bar {
+  height: 2px;
+  flex: 1;
+  border-radius: 2px;
+  transition: background-color 0.25s ease;
+  background: var(--border-mid);
+}
+.strength-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  min-width: 34px;
+  text-align: right;
+  letter-spacing: 0.2px;
+}
+
+.auth-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  padding: 8px 0;
+}
+.success-icon {
+  width: 72px; height: 72px;
+  border-radius: var(--radius-md);
+  background: var(--orange-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,108,55,0.18);
+  margin-bottom: 4px;
+}
+.error-icon {
+  background: rgba(240,75,71,0.07);
+  border-color: rgba(240,75,71,0.18);
+}
+.success-text {
+  font-size: 13.5px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  max-width: 280px;
+}
+.success-subtext {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* leftover from earlier iteration — still used in ForgotPasswordPage success state */
+/* .auth-success-icon-lg { width: 80px; height: 80px; } */

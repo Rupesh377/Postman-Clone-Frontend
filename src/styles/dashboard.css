@@ -1,0 +1,192 @@
+.dash-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.dash-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+
+.dash-subtitle {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.dash-new-btn {
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+/* shimmer for loading state */
+.dash-skeleton {
+  min-height: 130px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-sm) var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  pointer-events: none;
+}
+.dash-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255,255,255,0.04) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.dash-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 0;
+  gap: 10px;
+  max-width: 400px;
+}
+.dash-empty-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--orange-faint);
+  border: 1px solid rgba(255,108,55,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+.dash-empty-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+.dash-empty-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 2px;
+}
+
+.ws-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.ws-card-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 3px;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.workspace-card:hover .ws-card-actions,
+.workspace-card:focus-within .ws-card-actions { opacity: 1; }
+
+.ws-card-action-btn {
+  background: none;
+  border: none;
+  color: var(--text-subtle);
+  padding: 3px 4px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  transition: color var(--transition), background var(--transition);
+  cursor: pointer;
+}
+.ws-card-action-btn:hover:not(:disabled) {
+  color: var(--error);
+  background: rgba(240,75,71,0.08);
+}
+.ws-card-action-btn:disabled { cursor: not-allowed; opacity: 0.4; }
+
+.workspace-card--deleting { opacity: 0.45; pointer-events: none; }
+
+.ws-card-spinner {
+  display: inline-block;
+  width: 11px; height: 11px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+}
+
+.ws-card-name-input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-focus);
+  border-radius: var(--radius-xs);
+  padding: 2px 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: inherit;
+  outline: none;
+  letter-spacing: -0.2px;
+  box-shadow: 0 0 0 3px var(--orange-faint);
+}
+
+.ws-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.ws-card-open-hint {
+  font-size: 11px;
+  color: var(--text-subtle);
+  opacity: 0;
+  transition: opacity var(--transition), color var(--transition);
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+.workspace-card:hover .ws-card-open-hint {
+  opacity: 1;
+  color: var(--orange);
+}
+
+.ws-card-new-hint {
+  font-size: 11.5px;
+  color: var(--text-subtle);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .dash-header { flex-direction: column; align-items: flex-start; }
+  .dash-new-btn { width: 100%; justify-content: center; }
+  .dash-grid { grid-template-columns: 1fr; }
+  .dash-empty { align-items: center; text-align: center; }
+}
